@@ -5,7 +5,7 @@
 using namespace std;
 
 double f(double x){
-    return sin(x);
+    return x*sin(x);
 }
 
 double prostokaty(double a,double b, int n){
@@ -18,7 +18,7 @@ double prostokaty(double a,double b, int n){
         if(x+dx<b)
 	    xs=(x+x+dx)/2.0;
 	    else	{
-	    xs=(x+b)/2.0;
+	    xs=(x+b)/2.0;// bierzemy b zamiast x+dx jako koniec przedzialu
 	    d=b-x;//zmniejsza sie szerokosc przedzialu, jesli wychodzimy poza b
 	    }
 	    result+=d*f(xs);
@@ -26,6 +26,18 @@ double prostokaty(double a,double b, int n){
     }
 
    return result;
+
+}
+double trapezoidal(double a, double b, int n){
+    double h=(b-a)/(double)n;
+    double s=0.5*f(a)+0.5*f(b); // na bocznych granicach wchodza jako 0,5, dlatego liczymy tylko 1 raz  na poczatku!
+    for (int i=1;i<n;++i){
+      s+=f(a+h*i);
+    }
+
+
+    return h*s;
+
 
 }
 
@@ -48,9 +60,9 @@ double calka(double a,double b, int n){
 
 }
 
-double adapt(double epsilon,double a, double b, int n ){
-    double I_0=prostokaty(a,b,n);
-    double I_h=prostokaty(a,(a+b)/2.0,n)+prostokaty((a+b)/2.0,b,n);
+double adapt(double epsilon,double a, double b, int n ){ //epsilon-accuracy, n-initial number of steps
+    double I_0=trapezoid(a,b,n);
+    double I_h=ptrapezoid(a,(a+b)/2.0,n)+trapezoid((a+b)/2.0,b,n);
 if (abs(I_0-I_h)<epsilon){
 cout<<(a+b)/2<<"\t"<<(b-a)/(double)n<<endl;
 	return I_0;
@@ -69,6 +81,7 @@ int main()
     double epsilon=0.000001;
     double a=0.0;
     double b=2*M_PI;
-  cout<<adapt(epsilon,a,b,2);
+  cout<<"adapt: "<<adapt(epsilon,a,b,2)<<endl;
+  cout<<"trapezoidal: "<<trapezoidal(a,b,10000)<<endl;
 
 }
