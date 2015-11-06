@@ -40,8 +40,8 @@ exit(1);
 
 double z=atof(argv[1]);
 
-    cout<<setiosflags(ios::fixed)<<setprecision(10)<<endl;
-    double a=-1000;
+    cout<<setiosflags(ios::fixed)<<setprecision(4)<<endl;
+    double a=-15;
   cout<<"boole'a integral: "<<boole(a,z,10000)<<endl;
  
   
