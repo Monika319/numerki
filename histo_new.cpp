@@ -6,6 +6,12 @@
 
 using namespace std;
 
+double rand_in_range(double a,double b){
+
+double x=(double)rand()/static_cast<double>(RAND_MAX);
+return a+x*(b-a);
+}// sa wikesze skoki na plocie, bo losuje z wiekszego zakresu, duzo wiekszego tak naprawde
+
 
 double congruential()
 {
@@ -36,19 +42,6 @@ vector<unsigned int> histo(vector<int> dane, int xmin, int xmax, unsigned int n)
     return result;
 }
 
-// vector wynik
-//double dx=(xmax-xmin)/n;
-//int n_dane=dane.size(0
-//for (int i=0;i<n_dane;++i)
-//{
-
-//if(dane[i]>xmin && dane[i]<xmax)
-//{
-//int k=int((dane[i]-xmin)/dx);
-//wynik[k] +=1;
-//}}
-//return wynik;
-
 
 
 
@@ -58,7 +51,7 @@ int main()
 {
     vector <int> dane;
     for(int i=0;i<100000;++i){
-        dane.push_back(congruential());
+        dane.push_back(rand_in_range(33,1024));
     }
     int xmin=0;
     int xmax=1024;
