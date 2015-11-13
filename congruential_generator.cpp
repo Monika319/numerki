@@ -2,21 +2,25 @@
 #include <cmath>
 #include <iomanip>
 #include <cstdlib>
+#include <vector>
 
 using namespace std;
 
 
 double congruential()
 {
-    int a=33;
-    int c=1;
-    int m=1024;
+    int a=1103515245;
+    int c=12345;
+    int m=(int)pow(2,31);
    // int x_0=0;
     
     static int x=0;
     x=(a*x+c) % m;
     return x;
 }
+
+
+//brzeg nalezy do przedzialu z prawej strony
 
 int main()
 {
