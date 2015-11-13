@@ -123,14 +123,14 @@ double y_length=y_max+abs(y_min);
 for (int i=0;i<N;++i){
     x=rand_in_range(a,b);
     y=rand_in_range(y_min,y_max);
-    function=f(x);
-    results[i]=function;
+    double z=f(x);
+   // results[i]=z;
   // cout<<results[i]<<endl;
-  if (y>0 && y<function){
+  if (z>0 && y>0 && y<z){ //y wylosowany mniejszy od wartosci funkcji w tym punkcie
     counter++;
   }
-if(y<0 && y>function){
-    counter--;
+else if(z<0 && y<0 && y>z){
+    counter--; //dodajemy z przeciwnym znakiem
   }
     
 }
@@ -139,8 +139,7 @@ if(y<0 && y>function){
     double S=(b-a)*y_length;
     cout<<"S "<<S<<endl;
     integral=(double)counter/(double)N *S;
-return integral;
-
+return (double)counter/(double)N*(b-a)*(y_max-y_min);
 }
 
 
