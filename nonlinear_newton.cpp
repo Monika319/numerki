@@ -6,7 +6,7 @@ using namespace std;
 
 double f(double x)
 {
-	return pow(x,3);
+	return sin(x+cos(x))-cos(x+sin(x));
 
 }
 
@@ -42,7 +42,7 @@ return x;
 
 int main()
 {
-double result=newton(3.141592);
+double result=newton(5);
 
 cout<<result<<endl;
 
