@@ -170,13 +170,13 @@ void quick_sort(vector <int> &data,int left, int right)
     int i=left;
     int j=right;
    
-   int pivot=data[int((i+j)/2.)];
-   cout<<"pivot: "<<int((i+j)/2.)<<endl;
+   int pivot=data[(i+j)/2];
+   cout<<"pivot: "<<(i+j)/2<<endl;
    cout<<"left: "<<left<<endl;
    cout<<"right: "<<right<<endl;
-    while( i<j )
+    while( i <= j )
     {
-        print_vector(data);
+
         while(data[i]<pivot)
         {
             i++;
@@ -194,7 +194,6 @@ void quick_sort(vector <int> &data,int left, int right)
             i++;
             j--; 
         }
-        else break;
    }
       
    //sprawdzic czy dlugosc lewej czesci juz nie jest 0 lub 1
@@ -232,6 +231,7 @@ int main()
   //  cout<<"bubble"<<endl;
    cout<<endl;
    quick_sort(data,0,6);
+           print_vector(data);
    // print_vector(bubble_sort(data));
    //  cout<<"coctail: "<<endl;
    //  bubble_sort(data);
