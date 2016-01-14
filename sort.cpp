@@ -42,11 +42,11 @@ void print_vector(vector <int> data)
 //dziala tak samo szybko niezaleznie od tego, czy jest posortowany, czy nie
 vector<int> selection_sort(vector <int> data)
 {
-        
+      //2 petle for, bo musimy porownywac elementy  
     unsigned n=data.size();
     for (unsigned i=0;i<n;++i)
     {
-   // print_vector(data);
+    print_vector(data);
     int min=i;
     for (unsigned j=i;j<n;j++) //zaczynamy od i-tego indeksu!!!
     {
@@ -62,6 +62,33 @@ vector<int> selection_sort(vector <int> data)
 
     return data;
 }
+
+
+vector<int> selection_sort1(vector <int> data)
+{
+      //2 petle for, bo musimy porownywac elementy  
+    unsigned n=data.size();
+    for (unsigned i=0;i<n;++i)
+    {
+    print_vector(data);
+    
+    for (unsigned j=i;j<n;j++) //zaczynamy od i-tego indeksu!!!
+    {
+         if (data[j]<data[i])
+        {
+          // min=j;
+        	swap(data[i],data[j]);
+        }
+    
+    }
+     //swap(data[min],data[i]);
+    }
+    
+
+    return data;
+}
+
+
 
 //sprawdzamy z lewej strony
 vector<int> insertion_sort(vector <int> data)
@@ -220,9 +247,9 @@ int main()
     for(int i=0;i<N;++i){
         data.push_back(rand_in_range(0,N));
     }
-    data = {0, 1, 1, 3, 2, 5, 1};
+    data = {0, 1, 1, 3, 1, 5, 2};
     cout<<"rand vector"<<endl; 
-   // print_vector(data);
+    print_vector(data);
     //cout<<"min "<<find_min(data)<<endl;
     //cout<<"selection"<<endl;
     //print_vector(selection_sort(data));
@@ -230,8 +257,14 @@ int main()
    // print_vector(insertion_sort(data));
   //  cout<<"bubble"<<endl;
    cout<<endl;
-   quick_sort(data,0,6);
-           print_vector(data);
+	print_vector(selection_sort1(data));
+
+
+	 cout<<endl;
+	 cout<<"real selection"<<endl;
+	print_vector(selection_sort(data));
+   //quick_sort(data,0,6);
+           //print_vector(data);
    // print_vector(bubble_sort(data));
    //  cout<<"coctail: "<<endl;
    //  bubble_sort(data);

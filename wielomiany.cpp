@@ -49,6 +49,7 @@ void Min_max(vector<float>& x_points, float& min, float& max,int& minr)
     min=fabs(x_points[0]);
 
     max=x_points[0];
+
      for (unsigned i=0;i<x_points.size();++i)
      {
 	
@@ -76,15 +77,20 @@ void polynomial(vector<float> x,vector<float> y)
    cout<<"c.size()"<<c.size()<<endl;
    Min_max(x,min_fabs,max,min);
 
-   for (unsigned i=0;i<N;++i){
-    c[i]=P(0,x,y);
-    Min_max(x,min_fabs,max,min);
-    x.erase(x.begin()+min);
-    y.erase(y.begin()+min);
-    for (unsigned j=0;j<y.size();++j)
-    {
-    y.at(j)=(y.at(j)-c.at(i))/x.at(j);
-  }
+   for (int i=0;i<N;++i){
+
+            c[i]=P(0,x,y); //znajdujemy wartosc w 0!
+            //min zwraca numer indeksu
+            Min_max(x,min_fabs,max,min);
+            x.erase(x.begin()+min);
+            y.erase(y.begin()+min); 
+
+           for (unsigned j=0;j<y.size();++j)
+              {
+
+                  y.at(j)=(y.at(j)-c.at(i))/x.at(j);
+
+              }
   
     //cout<<"c["<<i<<"]"<<c[i]<<endl;
     cout<<c[i]<<"*"<<"x**"<<i<<"+";
