@@ -10,18 +10,22 @@ double f(double x){
 }
 
 double prostokaty(double a,double b, int n){
+
     double dx=(b-a)/(double)n;
     double d=dx;
     double result=0.0;
     double x=a;
     double xs=0.0;;
     while(x<b){
-        if(x+dx<b)
+      if(x+dx<b)
+      {
 	    xs=(x+x+dx)/2.0;
+      } 
 	    else	{
 	    xs=(x+b)/2.0;// bierzemy b zamiast x+dx jako koniec przedzialu
 	    d=b-x;//zmniejsza sie szerokosc przedzialu, jesli wychodzimy poza b
 	    }
+
 	    result+=d*f(xs);
 	    x+=dx;
     }
@@ -29,11 +33,16 @@ double prostokaty(double a,double b, int n){
    return result;
 
 }
+
+
 double trapezoidal(double a, double b, int n){
     double h=(b-a)/(double)n;
     double s=0.5*f(a)+0.5*f(b); // na bocznych granicach wchodza jako 0,5, dlatego liczymy tylko 1 raz  na poczatku!
+
     for (int i=1;i<n;++i){
+
       s+=f(a+h*i);
+
     }
 
 
@@ -139,7 +148,8 @@ else if(z<0 && y<0 && y>z){
     double S=(b-a)*y_length;
     cout<<"S "<<S<<endl;
     integral=(double)counter/(double)N *S;
-return (double)counter/(double)N*(b-a)*(y_max-y_min);
+
+return (double)counter/(double)N*(b-a)*(y_max-y_min); //target Area  [(b-a)*(y_max-y_min)]  *ulamek
 }
 
 
