@@ -27,7 +27,7 @@ vector<unsigned int> histo(vector<int> dane, int xmin, int xmax, unsigned int n)
 {
     //wypelniamy wektor zerami
     vector<unsigned int> result(n,0);
-    double delta_x=(double)(xmax-xmin)/(double)n;
+    double delta_x=(double)(xmax-xmin)/(double)n; //szerokosc binu
     int n_data=dane.size();
     for (int i=0;i<n_data;++i)
    {

@@ -17,6 +17,7 @@ return -cos(x+cos(x))* (-1+sin(x))-(-1-cos(x))* sin(x+sin(x));
 
 }
 int sign(double x){
+  
 	if (f(x)>0) return 1;
 	else if (f(x)<0) return -1;
 	else return 0;
